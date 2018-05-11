@@ -1,0 +1,36 @@
+<h1>New Quote</h1>
+
+<%= form_with scope: :quote, url: quotes_path, local: true do |form| %>
+
+<% if @quote.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@quote.errors.count, "error") %> prohibited
+        this quote from being saved:
+      </h2>
+      <ul>
+        <% @quote.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Back', quotes_path %>

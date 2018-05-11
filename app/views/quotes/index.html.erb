@@ -1,0 +1,21 @@
+<h1>Listing quotes</h1>
+
+<%= link_to 'Click here to add a new quote', new_quote_path %>
+<br>
+<br>
+<table border= "1">
+  <tr>
+  <th text-align: left;>Quote Text</th>
+  <th>Author</th>
+  <th colspan="2">Actions</th>
+</tr>
+
+<% @quotes.each do |quote| %>
+  <tr>
+    <td><%= quote.text %></td>
+    <td><%= quote.author %></td>
+    <td><%= link_to 'Show', quote_path(quote) %></td>
+    <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
+  </tr>
+<% end %>
+</table>
